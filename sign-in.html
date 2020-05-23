@@ -7,8 +7,11 @@
     <title>My Assignment</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -18,26 +21,26 @@
                 <a class="nav-link" href="index.html">HOME</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="sign-in.html">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sign-up.html">SIGNUP</a>
+            </li>
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">CATEGORY</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">CATEGORY</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">CATEGORY</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">CATEGORY</a>
-            </li>
+            </li> -->
         </ul>
-        <div class="sign_text">
+        <!-- <div class="sign_text">
 
             <i class="fa fa-user"></i><a href="sign-in.html"> Sign In</a> or <a href="sign-up.html">Create Account</a>
-        </div>
+        </div> -->
     </nav>
     <div class="jumbotron top">
         <div class="col-md-7">
-            <h1>Storystrap</h1>
+            <h1>Library</h1>
         </div>
         <div class="col-md-5 blank_space">
 
@@ -48,19 +51,21 @@
         <hr>
         <div class="sign_in">
             <div class="col-md-8">
-                <form class="form-horizontal">
+                <form class="form-horizontal" onsubmit="return signin_validate()">
 
 
                     <div class="form-group">
                         <label class="col-md-2">Email</label>
                         <div class="col-md-10">
-                            <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                            <small class="mand" id="error_lemail"></small>
+                            <input type="email" class="form-control" id="lemail" onblur="validate_lemail(this.value)" placeholder="Enter Email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2">Password</label>
                         <div class="col-md-10">
-                            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                            <small class="mand" id="error_lpassword"></small>
+                            <input type="password" class="form-control" id="lpassword" onblur="validate_lpassword(this.value)" placeholder="Enter Password">
                         </div>
                     </div>
 
@@ -88,6 +93,7 @@
 
 
     </footer>
+    <script src="js/form.js"></script>
 </body>
 
 </html>

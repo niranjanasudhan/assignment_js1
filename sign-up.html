@@ -7,6 +7,8 @@
     <title>My Assignment</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
@@ -18,26 +20,26 @@
                 <a class="nav-link" href="index.html">HOME</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="sign-in.html">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sign-up.html">SIGNUP</a>
+            </li>
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">CATEGORY</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">CATEGORY</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">CATEGORY</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">CATEGORY</a>
-            </li>
+            </li> -->
         </ul>
-        <div class="sign_text">
+        <!-- <div class="sign_text">
 
             <i class="fa fa-user"></i><a href="sign-in.html"> Sign In</a> or <a href="sign-up.html">Create Account</a>
-        </div>
+        </div> -->
     </nav>
     <div class="jumbotron top">
         <div class="col-md-7">
-            <h1>Storystrap</h1>
+            <h1>Library</h1>
         </div>
         <div class="col-md-5 blank_space">
 
@@ -49,56 +51,83 @@
         <hr>
         <div class="sign_up">
             <div class="col-md-8">
-                <form class="form-horizontal">
+                <form class="form-horizontal" onsubmit="return signup_validate()">
                     <div class="form-group">
-                        <label class="col-md-2">First Name</label>
+                        <label class="col-md-3">Name <small class="mand">*</small></label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="fname" placeholder="Enter First name">
+                            <small class="mand" id="error_name"></small>
+                            <input type="text" class="form-control" id="name" onblur="validate_name(this.value)" placeholder="Enter Name">
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label class="col-md-2">Last Name</label>
+                        <label class="col-md-3">Gender <small class="mand">*</small></label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="lname" placeholder="Enter Last name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-2">Gender</label>
-                        <div class="col-md-10">
-                            <select class="form-control">
+                            <small class="mand" id="error_gender"></small>
+                            <select class="form-control" id="gender" onblur="validate_gender(this.value)">
+                                <option value="">-- Select Gender --</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2">Date of Birth</label>
+                        <label class="col-md-3">Date of Birth <small class="mand">*</small></label>
                         <div class="col-md-10">
-                            <input type="date" class="form-control" id="dob">
+                            <small class="mand" id="error_dob"></small>
+                            <input type="date" class="form-control" id="dob" onblur="validate_dob(this.value)">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2">Address</label>
+                        <label class="col-md-3">Address <small class="mand">*</small></label>
                         <div class="col-md-10">
-                            <textarea class="form-control"></textarea>
+                            <small class="mand" id="error_address"></small>
+                            <textarea class="form-control address_field" id="address" placeholder="Address" onblur="validate_address(this.value)"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2">Email</label>
+                        <label class="col-md-3">Email <small class="mand">*</small></label>
                         <div class="col-md-10">
-                            <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                            <small class="mand" id="error_email"></small>
+                            <input type="email" class="form-control" id="email" onblur="validate_email(this.value)" placeholder="Enter Email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2">Password</label>
+                        <label class="col-md-3">Phone <small class="mand">*</small></label>
                         <div class="col-md-10">
-                            <input type="password" class="form-control" id="password" placeholder="Enter Password">
+                            <small class="mand" id="error_phone"></small>
+                            <input type="text" class="form-control" id="phone" onblur="validate_phone(this.value)" placeholder="Enter Phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3">Password <small class="mand">*</small></label>
+                        <div class="col-md-10">
+                            <small class="mand" id="error_password"></small>
+                            <input type="password" onfocus="show_instructions()" onkeydown="hide_instructions()" class="form-control pass" onKeyup="passwordStrenght(this.value)" id="password" onblur="validate_password(this.value)" placeholder="Enter Password">
+                            <div class="bubble" id="bub">
+                                <p>
+
+                                    <b>*</b> At least one lowercase character<br> <b>*</b> At least one uppercase character<br> <b>*</b> At least one number<br> <b>*</b> At least 8 characters and maximum of 32 characters<br>
+
+
+                                </p>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-danger" id="strength" style="width:0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3">Confirm Password <small class="mand">*</small></label>
+                        <div class="col-md-10">
+                            <small class="mand" id="error_confirm_password"></small>
+                            <input type="password" class="form-control" id="confirm_password" onblur="validate_confirm_password(this.value)" placeholder="Enter Password">
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <button type="submit" class="btn btn-primary submit_button">Submit</button>
                         </div>
                     </div>
@@ -122,6 +151,7 @@
 
 
     </footer>
+    <script src="js/form.js"></script>
 </body>
 
 </html>
