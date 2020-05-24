@@ -36,10 +36,21 @@ function validate_dob(val) {
         document.getElementById('error_dob').innerHTML = "* Please Enter Date of Birth";
         return false;
     } else {
-        document.getElementById('error_dob').style.display = "none";
-        document.getElementById('error_dob').innerHTML = "";
-        document.getElementById('dob').style.border = "2px solid #120f66";
-        return true;
+
+
+        var myDate = new Date(val);
+        var today = new Date();
+        if (myDate > today) {
+            document.getElementById('error_dob').style.display = "block";
+            document.getElementById('dob').style.border = "2px solid tomato";
+            document.getElementById('error_dob').innerHTML = "* You cannot enter a date in the future!.";
+            return false;
+        } else {
+            document.getElementById('error_dob').style.display = "none";
+            document.getElementById('error_dob').innerHTML = "";
+            document.getElementById('dob').style.border = "2px solid #120f66";
+            return true;
+        }
     }
 
 }
