@@ -194,6 +194,7 @@ function signup_validate() {
         document.getElementById('confirm_password').focus();
     }
     if (flag == 1) {
+        modal.style.display = "block";
         return true;
     } else {
         return false;
@@ -295,10 +296,51 @@ function signin_validate() {
         document.getElementById('lpassword').focus();
     }
     if (flag == 1) {
+        modal_login.style.display = "block";
         return true;
+
     } else {
         return false;
     }
 
 
 }
+
+
+///sign up message modal
+
+var modal = document.getElementById("myModal");
+// var btn = document.getElementById("myBtn");
+// var span = document.getElementsByClassName("close")[0];
+// span.onclick = function() {
+//     modal.style.display = "none";
+// }
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+///sign in message modal
+
+var modal_login = document.getElementById("myModal_login");
+// var btn1 = document.getElementById("myBtn");
+
+
+window.onclick = function(event) {
+    if (event.target == modal_login) {
+        modal_login.style.display = "none";
+    }
+}
+
+
+//sign up
+var form = document.getElementById("myForm");
+// var form_login = document.getElementById("myForm");
+
+function handleForm(event) { event.preventDefault(); }
+form.addEventListener('submit', handleForm);
+// form_login.addEventListener('submit', handleForm);
+//sign in

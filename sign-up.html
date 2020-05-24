@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Assignment</title>
+    <title>Library</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -51,7 +51,7 @@
         <hr>
         <div class="sign_up">
             <div class="col-md-8">
-                <form class="form-horizontal" onsubmit="return signup_validate()">
+                <form class="form-horizontal" id="myForm" onsubmit="return signup_validate()">
                     <div class="form-group">
                         <label class="col-md-3">Name <small class="mand">*</small></label>
                         <div class="col-md-10">
@@ -138,6 +138,23 @@
 
     </div>
 
+    <!-- Success Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div>
+                <span class="close">&times;</span>
+            </div>
+            <div class="success_img">
+                <img src="images/tik.gif">
+            </div>
+            <div class="success_h1">
+                <h1>You Have been Registered Successfully</h1>
+            </div>
+            <br>
+            <a class="success_btn" href="sign-in.html"><button class="btn btn-primary">Login To Continue..</button></a>
+        </div>
+
+    </div>
 
     <footer>
         <div class="container">
